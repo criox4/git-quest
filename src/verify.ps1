@@ -307,3 +307,33 @@ switch ($levelId) {
         Print-Trophy -LevelName "Cherry-Picking"
     }
 }
+
+# Centralized State Persistence Handler
+$stateFile = Join-Path $ROOT_DIR "..\.gitquest-state.json"
+$completed = @()
+
+if (Test-Path -Path $stateFile) {
+    try {
+        $json = Get-Content -Path $stateFile -Raw | ConvertFrom-Json
+        if ($json.completed) {
+            $completed = $json.completed
+        }
+    } catch {}
+}
+
+if ($completed -notcontains $levelId) {
+    $completed += $levelId
+}
+
+# Re-sort
+$completed = $completed | Sort-Object
+
+$listStr = $completed -join ", "
+$jsonContent = @"
+{
+  "completed": [
+    $listStr
+  ]
+}
+"@
+Set-Content -Path $stateFile -Value $jsonContent -Encoding utf8

@@ -249,3 +249,49 @@ case "$LEVEL_ID" in
     print_trophy "Cherry-Picking"
     ;;
 esac
+
+# Centralized State Persistence Handler
+STATE_FILE="${ROOT_DIR}/../.gitquest-state.json"
+COMPLETED=()
+
+# Load state
+if [ -f "$STATE_FILE" ]; then
+  content=$(cat "$STATE_FILE" 2>/dev/null)
+  matches=$(echo "$content" | grep -oE '[0-7]')
+  for m in $matches; do
+    COMPLETED+=("$m")
+  done
+fi
+
+# Add current level if not already present
+already_exists=0
+for c in "${COMPLETED[@]}"; do
+  if [ "$c" -eq "$LEVEL_ID" ]; then
+    already_exists=1
+  fi
+done
+
+if [ $already_exists -eq 0 ]; then
+  COMPLETED+=("$LEVEL_ID")
+fi
+
+# Sort completed array
+SORTED_COMPLETED=()
+for i in {1..7}; do
+  for c in "${COMPLETED[@]}"; do
+    if [ "$c" -eq "$i" ]; then
+      SORTED_COMPLETED+=("$i")
+    fi
+  done
+done
+
+# Save back to file
+list=""
+for c in "${SORTED_COMPLETED[@]}"; do
+  if [ -n "$list" ]; then
+    list="${list}, ${c}"
+  else
+    list="${c}"
+  fi
+done
+echo -e "{\n  \"completed\": [\n    ${list}\n  ]\n}" > "$STATE_FILE"
