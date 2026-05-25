@@ -255,7 +255,7 @@ case "$LEVEL_ID" in
 esac
 
 # Centralized State Persistence Handler
-STATE_FILE="${ROOT_DIR}/../.gitquest-state.json"
+STATE_FILE="${ROOT_DIR}/.gitquest-state.json"
 COMPLETED=()
 
 # Load state

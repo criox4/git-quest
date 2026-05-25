@@ -312,7 +312,7 @@ switch ($levelId) {
 }
 
 # Centralized State Persistence Handler
-$stateFile = Join-Path $ROOT_DIR "..\.gitquest-state.json"
+$stateFile = Join-Path $ROOT_DIR ".gitquest-state.json"
 $completed = @()
 
 if (Test-Path -Path $stateFile) {
