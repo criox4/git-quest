@@ -1,0 +1,20 @@
+{
+  "name": "git-quest",
+  "version": "1.0.0",
+  "description": "An interactive Git skills test suite for students",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "verify": "node verify.js"
+  },
+  "keywords": [
+    "git",
+    "education",
+    "tutorial",
+    "interactive",
+    "cli"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}
