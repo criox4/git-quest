@@ -17,11 +17,27 @@ You will face **7 progressive levels** that test essential real-world Git operat
 ## 🚀 How to Play
 
 ### 1. Launch the Game
-From the root of this project, run the main interactive CLI menu:
+From the root of this project, launch the Git Quest Dashboard. You can use any of the three alternative launchers depending on your local environment (Node.js is completely optional!):
+
+#### Option A: Node.js Launcher
+If you have Node.js installed, run:
 ```bash
 npm start
 ```
-This will display the **Git Quest Dashboard** where you can select your challenge.
+
+#### Option B: Bash Launcher (macOS / Linux / Git Bash)
+If you don't have Node.js but have a Unix terminal, run:
+```bash
+bash git-quest.sh
+```
+
+#### Option C: PowerShell Launcher (Windows)
+If you are on Windows using PowerShell, run:
+```powershell
+powershell -ExecutionPolicy Bypass -File git-quest.ps1
+```
+
+This will display the **Git Quest Dashboard** where you can select and initialize your challenge.
 
 ### 2. Enter the Challenge Folder
 When you select and initialize a challenge (e.g. Level 2), the game engine will automatically build a target directory inside:
