@@ -232,7 +232,7 @@ display_objectives() {
   case "$id" in
     1)
       info_lines+=(
-        "1. Initialize a new Git repository in this folder."
+        "1. Initialize a new Git repository locally inside this specific level folder (run 'git init')."
         "2. Create a file named hello.txt containing the exact text 'Hello, Git!'."
         "3. Stage the hello.txt file."
         "4. Commit the file with the message 'Initial commit'."
@@ -297,11 +297,10 @@ display_objectives() {
   info_lines+=(
     ""
     "${BOLD}${CYAN}DIRECTIONS:${RESET}"
-    "1. Open a new terminal tab/window."
-    "2. CD into the challenge folder:"
+    "1. CD into the challenge folder:"
     "   ${YELLOW}${BOLD}cd ${rel_path}${RESET}"
-    "3. Follow the objectives listed above and execute your Git commands."
-    "4. To verify if your solution is correct, run:"
+    "2. Execute the required Git actions inside that folder."
+    "3. To verify if your solution is correct, run:"
     "   ${YELLOW}${BOLD}bash ../../src/verify.sh${RESET}"
   )
   
@@ -415,7 +414,9 @@ run_menu() {
       print_banner
       display_objectives "$level_id" "$name" "$tagline" "$dir_name"
       
-      read -p "Press [Enter] to return to the Main Menu... " -r
+      echo -e "\n${GREEN}${BOLD}🚀 Sandbox successfully initialized! Your terminal is ready.${RESET}"
+      echo -e "${YELLOW}${BOLD}👉 Run: cd git-challenges/${dir_name}${RESET}\n"
+      exit 0
     else
       echo -e "${RED}Invalid selection. Try again.${RESET}"
       sleep 1

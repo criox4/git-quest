@@ -47,7 +47,7 @@ export const levels = [
     dirName: "level-1-basics",
     tagline: "Initialization and Committing",
     objectives: [
-      "Initialize a new Git repository in this folder.",
+      "Initialize a new Git repository locally inside this specific level folder (run 'git init').",
       "Create a file named hello.txt containing the exact text 'Hello, Git!'.",
       "Stage the hello.txt file.",
       "Commit the file with the message 'Initial commit'."
@@ -61,7 +61,7 @@ export const levels = [
       
       writeFileContent(
         path.join(dir, 'README.txt'),
-        "Welcome to Level 1!\n\nRead the objectives in your terminal and complete the tasks in this folder."
+        "Welcome to Level 1!\n\nRead the objectives in your terminal and complete the tasks in this folder.\nNote: You must run 'git init' here to make this specific folder its own local Git repository."
       );
     },
     verify: (dir) => {

@@ -167,24 +167,18 @@ function runGame() {
         ...selectedLevel.objectives.map((obj, i) => `${i + 1}. ${obj}`),
         "",
         style("DIRECTIONS:", colors.bold, colors.cyan),
-        `1. Open a new terminal tab/window.`,
-        `2. CD into the challenge folder:`,
+        `1. CD into the challenge folder:`,
         `   ${style(`cd ${relativePath}`, colors.yellow, colors.bold)}`,
-        `3. Follow the objectives listed above and execute your Git commands.`,
-        `4. To verify if your solution is correct, run:`,
-        `   ${style("node ../../verify.js", colors.yellow, colors.bold)}`
+        `2. Execute the required Git actions inside that folder.`,
+        `3. To verify if your solution is correct, run:`,
+        `   ${style("node ../../src/verify.js", colors.yellow, colors.bold)}`
       ];
       
       drawBox(infoLines, { color: colors.cyan, padding: 1 });
       
-      const rlNext = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-      });
-      rlNext.question(style('\nPress [Enter] to return to the Main Menu... ', colors.gray), () => {
-        rlNext.close();
-        runGame();
-      });
+      console.log(style(`\n🚀 Sandbox successfully initialized! Your terminal is ready.`, colors.green, colors.bold));
+      console.log(style(`👉 Run: cd ${relativePath}\n`, colors.yellow, colors.bold));
+      process.exit(0);
       
     } catch (e) {
       print.error(`Failed to initialize level: ${e.message}`);

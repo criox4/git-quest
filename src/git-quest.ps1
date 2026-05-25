@@ -272,7 +272,7 @@ function Display-Objectives {
     
     switch ($id) {
         1 {
-            $lines += "1. Initialize a new Git repository in this folder."
+            $lines += "1. Initialize a new Git repository locally inside this specific level folder (run 'git init')."
             $lines += "2. Create a file named hello.txt containing the exact text 'Hello, Git!'."
             $lines += "3. Stage the hello.txt file."
             $lines += "4. Commit the file with the message 'Initial commit'."
@@ -323,11 +323,10 @@ function Display-Objectives {
     
     $lines += ""
     $lines += "DIRECTIONS:"
-    $lines += "1. Open a new terminal tab/window."
-    $lines += "2. CD into the challenge folder:"
+    $lines += "1. CD into the challenge folder:"
     $lines += "   cd git-challenges/$dirName"
-    $lines += "3. Follow the objectives listed above and execute your Git commands."
-    $lines += "4. To verify if your solution is correct, run:"
+    $lines += "2. Execute the required Git actions inside that folder."
+    $lines += "3. To verify if your solution is correct, run:"
     $lines += "   powershell -ExecutionPolicy Bypass -File ..\..\src\verify.ps1"
     
     Draw-Box -Lines $lines -Color Cyan
@@ -428,7 +427,9 @@ function Run-Menu {
             Print-Banner
             Display-Objectives -id $levelId -name $name -tagline $tagline -dirName $dirName
             
-            Read-Host "Press [Enter] to return to the Main Menu..." | Out-Null
+            Write-Color "`n🚀 Sandbox successfully initialized! Your terminal is ready." -Color Green -Bold $true
+            Write-Color "👉 Run: cd git-challenges/$dirName`n" -Color Yellow -Bold $true
+            exit
         }
         else {
             Write-Color "Invalid selection. Try again." -Color Red
