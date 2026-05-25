@@ -11,6 +11,10 @@ MAGENTA='\033[35m'
 CYAN='\033[36m'
 GRAY='\033[90m'
 
+# Resolve script directory and parent root parent
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
 # Box printer
 draw_box() {
   local lines=("$@")

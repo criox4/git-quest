@@ -95,6 +95,9 @@ function Fail-Challenge {
     exit 1
 }
 
+# Resolve script directory and root parent
+$ROOT_DIR = Split-Path $PSScriptRoot -Parent
+
 # Detect level number from folder name
 $folderName = Split-Path $pwd -Leaf
 if ($folderName -notmatch "^level-(\d+)-") {
