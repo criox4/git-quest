@@ -16,8 +16,8 @@ function Write-Color {
 }
 
 $ROOT_DIR = $PSScriptRoot
-$STATE_FILE = Join-Path $ROOT_DIR ".gitquest-state.json"
-$CHALLENGE_ROOT = Join-Path $ROOT_DIR "git-challenges"
+$STATE_FILE = Join-Path $ROOT_DIR "..\.gitquest-state.json"
+$CHALLENGE_ROOT = Join-Path $ROOT_DIR "..\git-challenges"
 
 $global:CompletedLevels = @()
 
@@ -142,7 +142,7 @@ function Setup-Level {
             Set-Location -Path $dir
             git add index.html
             git commit -m "Initial commit on main" -q
-            Set-Location -Path $curr
+            Set-Location -Path (Join-Path $ROOT_DIR "..")
         }
         3 {
             Init-LevelGit -dir $dir
@@ -168,7 +168,7 @@ function Setup-Level {
             git add index.html
             git commit -m "Update welcome message on main" -q
             
-            Set-Location -Path $curr
+            Set-Location -Path (Join-Path $ROOT_DIR "..")
         }
         4 {
             Init-LevelGit -dir $dir
@@ -193,7 +193,7 @@ function Setup-Level {
             git commit -m "Add system configuration" -q
             
             git checkout feature-payment -q
-            Set-Location -Path $curr
+            Set-Location -Path (Join-Path $ROOT_DIR "..")
         }
         5 {
             Init-LevelGit -dir $dir
@@ -206,7 +206,7 @@ function Setup-Level {
             
             $dirty = "// TODO: Implement API endpoints`nconsole.log(`"API active`");`n"
             Add-Content -Path (Join-Path $dir "server.js") -Value $dirty
-            Set-Location -Path $curr
+            Set-Location -Path (Join-Path $ROOT_DIR "..")
         }
         6 {
             Init-LevelGit -dir $dir
@@ -224,7 +224,7 @@ function Setup-Level {
             Set-Content -Path (Join-Path $dir "README.md") -Value "# Calculator Project`nA high-performance calculator.`n"
             git add README.md
             git commit -m "Update README documentation" -q
-            Set-Location -Path $curr
+            Set-Location -Path (Join-Path $ROOT_DIR "..")
         }
         7 {
             Init-LevelGit -dir $dir
@@ -250,7 +250,7 @@ function Setup-Level {
             
             git checkout main -q 2>$null
             if ($LASTEXITCODE -ne 0) { git checkout master -q }
-            Set-Location -Path $curr
+            Set-Location -Path (Join-Path $ROOT_DIR "..")
         }
     }
 }
@@ -328,7 +328,7 @@ function Display-Objectives {
     $lines += "   cd git-challenges/$dirName"
     $lines += "3. Follow the objectives listed above and execute your Git commands."
     $lines += "4. To verify if your solution is correct, run:"
-    $lines += "   powershell -ExecutionPolicy Bypass -File ..\..\verify.ps1"
+    $lines += "   powershell -ExecutionPolicy Bypass -File ..\..\src\verify.ps1"
     
     Draw-Box -Lines $lines -Color Cyan
 }
@@ -352,7 +352,7 @@ function Run-Menu {
             "Welcome, recruit!",
             "Complete the levels below in order.",
             "Solve the Git puzzles directly inside the challenge directories.",
-            "Verify via: powershell -ExecutionPolicy Bypass -File ..\..\verify.ps1 inside the level folder!"
+            "Verify via: powershell -ExecutionPolicy Bypass -File ..\..\src\verify.ps1 inside the level folder!"
         )
         Draw-Box -Lines $welcomeLines -Color Magenta
         

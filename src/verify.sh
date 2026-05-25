@@ -75,7 +75,7 @@ if [[ ! $FOLDER_NAME =~ ^level-([0-9]+)- ]]; then
   echo -e "${YELLOW}${BOLD}⚠ Verification must be run inside a specific challenge directory!${RESET}"
   echo -e "\nExample Usage:"
   echo -e "  1. ${YELLOW}cd git-challenges/level-1-basics${RESET}"
-  echo -e "  2. ${YELLOW}bash ../../verify.sh${RESET}\n"
+  echo -e "  2. ${YELLOW}bash ../../src/verify.sh${RESET}\n"
   exit 1
 fi
 

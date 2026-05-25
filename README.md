@@ -28,13 +28,13 @@ npm start
 #### Option B: Bash Launcher (macOS / Linux / Git Bash)
 If you don't have Node.js but have a Unix terminal, run:
 ```bash
-bash git-quest.sh
+bash src/git-quest.sh
 ```
 
 #### Option C: PowerShell Launcher (Windows)
 If you are on Windows using PowerShell, run:
 ```powershell
-powershell -ExecutionPolicy Bypass -File git-quest.ps1
+powershell -ExecutionPolicy Bypass -File src/git-quest.ps1
 ```
 
 This will display the **Git Quest Dashboard** where you can select and initialize your challenge.
@@ -56,19 +56,19 @@ To check if you successfully passed the level, you can run the verifier. Git Que
 #### Option A: Node.js Verifier
 If you have Node.js installed, run:
 ```bash
-node ../../verify.js
+node ../../src/verify.js
 ```
 
 #### Option B: Bash Verifier (macOS / Linux / Git Bash)
 If you don't have Node.js but have a Unix terminal, run:
 ```bash
-bash ../../verify.sh
+bash ../../src/verify.sh
 ```
 
 #### Option C: PowerShell Verifier (Windows)
 If you are on Windows using PowerShell, run:
 ```powershell
-powershell -ExecutionPolicy Bypass -File ..\..\verify.ps1
+powershell -ExecutionPolicy Bypass -File ..\..\src\verify.ps1
 ```
 
 The game engine will automatically detect which challenge directory you are currently working in, inspect its Git repository state, and let you know if you succeeded! If your attempt has issues, the verifier will diagnose your repository and provide helpful hints to guide you to the right solution.

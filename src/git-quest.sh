@@ -12,8 +12,8 @@ CYAN='\033[36m'
 GRAY='\033[90m'
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-STATE_FILE="${ROOT_DIR}/.gitquest-state.json"
-CHALLENGE_ROOT="${ROOT_DIR}/git-challenges"
+STATE_FILE="${ROOT_DIR}/../.gitquest-state.json"
+CHALLENGE_ROOT="${ROOT_DIR}/../git-challenges"
 
 # Load completed levels
 load_completed() {
@@ -130,7 +130,7 @@ setup_level() {
       echo -e "<!DOCTYPE html>\n<html>\n<head><title>My Awesome Site</title></head>\n<body><h1>Under Construction</h1></body>\n</html>" > index.html
       git add index.html
       git commit -m "Initial commit on main" -q
-      cd "$ROOT_DIR" || exit 1
+      cd "${ROOT_DIR}/.." || exit 1
       ;;
     3)
       init_level_git "$dir"
@@ -147,7 +147,7 @@ setup_level() {
       echo -e "<!DOCTYPE html>\n<html>\n<head><title>Git Quest Portal</title></head>\n<body>\n  <h1>Welcome to Git Quest</h1>\n  <p>Enjoy your training session today!</p>\n  <!-- ABOUT_SECTION -->\n</body>\n</html>" > index.html
       git add index.html
       git commit -m "Update welcome message on main" -q
-      cd "$ROOT_DIR" || exit 1
+      cd "${ROOT_DIR}/.." || exit 1
       ;;
     4)
       init_level_git "$dir"
@@ -166,7 +166,7 @@ setup_level() {
       git commit -m "Add system configuration" -q
       
       git checkout feature-payment -q
-      cd "$ROOT_DIR" || exit 1
+      cd "${ROOT_DIR}/.." || exit 1
       ;;
     5)
       init_level_git "$dir"
@@ -174,7 +174,7 @@ setup_level() {
       git add server.js
       git commit -m "Initialize server file" -q
       echo -e '// TODO: Implement API endpoints\nconsole.log("API active");\n' >> server.js
-      cd "$ROOT_DIR" || exit 1
+      cd "${ROOT_DIR}/.." || exit 1
       ;;
     6)
       init_level_git "$dir"
@@ -189,7 +189,7 @@ setup_level() {
       echo -e '# Calculator Project\nA high-performance calculator.\n' > README.md
       git add README.md
       git commit -m "Update README documentation" -q
-      cd "$ROOT_DIR" || exit 1
+      cd "${ROOT_DIR}/.." || exit 1
       ;;
     7)
       init_level_git "$dir"
@@ -211,7 +211,7 @@ setup_level() {
       git commit -m "WIP unfinished dashboard" -q
       
       git checkout main -q 2>/dev/null || git checkout master -q
-      cd "$ROOT_DIR" || exit 1
+      cd "${ROOT_DIR}/.." || exit 1
       ;;
   esac
 }
@@ -302,7 +302,7 @@ display_objectives() {
     "   ${YELLOW}${BOLD}cd ${rel_path}${RESET}"
     "3. Follow the objectives listed above and execute your Git commands."
     "4. To verify if your solution is correct, run:"
-    "   ${YELLOW}${BOLD}bash ../../verify.sh${RESET}"
+    "   ${YELLOW}${BOLD}bash ../../src/verify.sh${RESET}"
   )
   
   draw_box "${info_lines[@]}"
@@ -331,7 +331,7 @@ run_menu() {
       "${BOLD}Welcome, recruit!${RESET}"
       "Complete the levels below in order."
       "Solve the Git puzzles directly inside the challenge directories."
-      "Verify via: ${YELLOW}${BOLD}bash ../../verify.sh${RESET} inside the level folder!"
+      "Verify via: ${YELLOW}${BOLD}bash ../../src/verify.sh${RESET} inside the level folder!"
     )
     draw_box "${header_lines[@]}"
     

@@ -102,7 +102,7 @@ if ($folderName -notmatch "^level-(\d+)-") {
     Write-Host ""
     Write-Color "Example Usage:"
     Write-Color "  1. cd git-challenges/level-1-basics" -Color Yellow
-    Write-Color "  2. powershell -ExecutionPolicy Bypass -File ..\..\verify.ps1" -Color Yellow
+    Write-Color "  2. powershell -ExecutionPolicy Bypass -File ..\..\src\verify.ps1" -Color Yellow
     Write-Host ""
     exit 1
 }

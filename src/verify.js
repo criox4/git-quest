@@ -1,17 +1,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { levels } from './src/levels.js';
+import { levels } from './levels.js';
 import { 
   colors, 
   style, 
   drawBox, 
   print 
-} from './src/utils.js';
+} from './utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const ROOT_DIR = path.resolve(__dirname);
+const SRC_DIR = path.resolve(__dirname);
+const ROOT_DIR = path.resolve(SRC_DIR, '..');
 const STATE_FILE_PATH = path.join(ROOT_DIR, '.gitquest-state.json');
 
 // Load state helper
@@ -58,7 +59,7 @@ function printCelebration(levelName, nextLevel) {
       style("🔥 NEXT CHALLENGE UNLOCKED! 🔥", colors.bold, colors.cyan),
       `Level ${nextLevel.id}: ${nextLevel.name} is now available.`,
       "",
-      `Return to the main menu with: ${style("npm start", colors.yellow, colors.bold)}`,
+      `Return to the main menu with: ${style("npm start", colors.yellow, colors.bold)} (or bash/powershell launchers)`,
       `and choose Level ${nextLevel.id} to initialize your next sandbox.`
     ], { color: colors.green });
   } else {
@@ -86,7 +87,7 @@ function verify() {
     print.warn("Verification command must be run inside a specific challenge directory!");
     console.log(style("\nExample Usage:", colors.bold, colors.white));
     console.log(`  1. ${style("cd git-challenges/level-1-basics", colors.yellow)}`);
-    console.log(`  2. ${style("node ../../verify.js", colors.yellow)}`);
+    console.log(`  2. ${style("node ../../src/verify.js", colors.yellow)}`);
     
     // List what levels have been initialized
     const challengesPath = path.join(ROOT_DIR, 'git-challenges');
