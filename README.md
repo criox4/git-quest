@@ -34,14 +34,28 @@ Open a separate terminal window, `cd` into that specific folder, and read the pr
 Execute the requested Git actions inside that challenge folder (e.g., initializing a repo, making commits, branching, merging).
 
 ### 4. Verify Your Work
-To check if you successfully passed the level, you can run the verifier.
-You can run it from **anywhere** (even inside the challenge folder itself!) by calling:
+
+To check if you successfully passed the level, you can run the verifier. Git Quest provides three alternative verifiers depending on your local environment (Node.js is completely optional for verification!):
+
+#### Option A: Node.js Verifier
+If you have Node.js installed, run:
 ```bash
 node ../../verify.js
 ```
-The game engine will automatically detect which challenge directory you are currently working in, inspect its Git repository state, and let you know if you succeeded!
 
-If your attempt has issues, **Git Quest** will diagnose your repository and provide helpful hints to guide you to the right solution.
+#### Option B: Bash Verifier (macOS / Linux / Git Bash)
+If you don't have Node.js but have a Unix terminal, run:
+```bash
+bash ../../verify.sh
+```
+
+#### Option C: PowerShell Verifier (Windows)
+If you are on Windows using PowerShell, run:
+```powershell
+powershell -ExecutionPolicy Bypass -File ..\..\verify.ps1
+```
+
+The game engine will automatically detect which challenge directory you are currently working in, inspect its Git repository state, and let you know if you succeeded! If your attempt has issues, the verifier will diagnose your repository and provide helpful hints to guide you to the right solution.
 
 ---
 
