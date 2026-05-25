@@ -117,8 +117,9 @@ export function runShellCommand(cmd, cwd) {
 // Helper to check if a directory is a Git repository
 export function isGitRepo(dir) {
   if (!fs.existsSync(dir)) return false;
-  const result = runGitCommand('rev-parse --is-inside-work-tree', dir);
-  return result === 'true';
+  // Ensure the local folder has its own .git directory directly
+  const dotGitPath = path.join(dir, '.git');
+  return fs.existsSync(dotGitPath) && fs.statSync(dotGitPath).isDirectory();
 }
 
 // Helper to get active branch name
